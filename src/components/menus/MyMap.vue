@@ -11,7 +11,7 @@
   </div>
 
   <button class="btn btn-primary" type="submit" @click="add">添加标号</button>
-  <button @click="switchVisible()">{{ visible ? "隐藏" : "显示" }}</button>
+  <button class="btn btn-primary" @click="switchVisible()">{{ visible ? "隐藏" : "显示" }}</button>
 
   <!-- 添加数据 -->
   <div class="card">
