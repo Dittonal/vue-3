@@ -19,10 +19,10 @@
     <tbody>
       <tr v-for="(item, i) in datalist" :key="item.id">
         <td >{{ i + 1 }}</td>
-        <td >{{ item.accountName }}</td>
-        <td >{{ item.platform }}</td>
-        <td >{{ item.platformFunction }}</td>
-        <td >{{item.operationFunction}}</td>
+        <td :title="item.accountName">{{ item.accountName }}</td>
+        <td :title="item.platform">{{ item.platform }}</td>
+        <td :title="item.platformFunction">{{ item.platformFunction }}</td>
+        <td :title="item.operationFunction">{{item.operationFunction}}</td>
         <td :title="item.operationContent">{{item.operationContent}}</td>
         <td >{{item.loginIp}}</td>
         <td >{{item.operationTime}}</td>
@@ -84,5 +84,6 @@ tr td{
   overflow:hidden;
   white-space:nowrap;
   text-overflow:ellipsis;
+  width: 145px;
 }
 </style>
