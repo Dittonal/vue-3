@@ -54,7 +54,8 @@
    @current-change="handleCurrentChange"
    :current-page="currentPage" 
    :page-sizes="[1,5,10,20]" 
-   :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="datalist.length">
+   :page-size="pageSize"
+   layout="total, sizes, prev, pager, next, jumper" :total="datalist.length">
 </el-pagination>
 
   </div>
