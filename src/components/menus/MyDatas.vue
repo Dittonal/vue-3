@@ -1,6 +1,35 @@
 <template>
   <!-- 标题 -->
-  <h4 class="text-center">数据管理</h4>
+  <h3 class="text-left">数据管理</h3>
+  <!--筛选  -->
+    <el-form-item >
+      <el-col :span="11">
+        <el-form-item >
+          <el-date-picker
+            v-model="startTime"
+            type="date"
+            label="开始时间"
+            placeholder="开始时间"
+            style="width: 100%"
+          />
+        </el-form-item>
+      </el-col>
+      <el-col class="text-center" :span="2">
+        <span class="text-gray-500">-</span>
+      </el-col>
+      <el-col :span="11">
+        <el-form-item >
+          <el-date-picker
+            v-model="endTime"
+            type="date"
+            label="结束时间"
+            placeholder="结束时间"
+            style="width: 100%"
+          />
+        </el-form-item>
+      </el-col>
+    </el-form-item>
+    
 
   <!-- 用户列表
   <table
@@ -32,10 +61,10 @@
       </tr>
     </tbody>
   </table> -->
-  <!-- ele-ui -->
+  <!-- ele-ui logs列表-->
   <div style="table-layout: fixed">
     <el-table :data="datalist.slice((currentPage - 1) * pageSize, currentPage*pageSize)" border style="table-layout: fixed">
-      <el-table-column label="序号" align="center">
+      <el-table-column label="序号" align="center" min-width=100>
         <template v-slot:default="scope">
               <span>{{(currentPage - 1) * pageSize + scope.$index + 1}}</span>
         </template>
@@ -46,7 +75,7 @@
       <el-table-column align="center" prop="operationFunction" label="操作功能" ></el-table-column>
       <el-table-column align="center" prop="operationContent" label="操作内容" show-overflow-tooltip ></el-table-column>
       <el-table-column align="center" prop="loginIp" label="登陆IP" ></el-table-column>
-      <el-table-column align="center" prop="operationTime" label="操作时间"  sortable></el-table-column>
+      <el-table-column align="center" prop="operationTime" label="操作时间"  sortable sort-orders='ascending'></el-table-column>
     </el-table>
 
     <el-pagination align='center' 
@@ -55,7 +84,7 @@
    :current-page="currentPage" 
    :page-sizes="[1,5,10,20]" 
    :page-size="pageSize"
-   layout="total, sizes, prev, pager, next, jumper" 
+   layout="total,->, sizes, prev, pager, next, jumper" 
    :total="datalist.length">
 </el-pagination>
 
@@ -69,6 +98,9 @@ export default {
   name: "MyDatas",
   data() {
     return {
+      // 筛选时间
+      startTime:"",
+      endTime:"",
       // 用户列表数据
       currentPage: 1, //当前页
       pageSize: 10, //一页条数
@@ -250,7 +282,6 @@ export default {
   methods: {
      //每页条数改变时触发 选择一页显示多少行
      handleSizeChange(val) {
-         console.log(`每页 ${val} 条`);
          this.currentPage = 1;
          this.pageSize = val;
      },
@@ -266,6 +297,7 @@ export default {
   },
   created() {
     this.getData();
+    this.endTime=''
   },
 };
 </script>
@@ -273,11 +305,13 @@ export default {
 <style lang="less" scoped>
 .table-tooltip{
     max-width: 200px;
+
 }
 .table-style .cell{
     width:200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    fill-opacity: 20%;
 }
 </style>
