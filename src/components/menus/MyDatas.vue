@@ -33,20 +33,20 @@
     </tbody>
   </table> -->
   <!-- ele-ui -->
-  <div>
+  <div style="table-layout: fixed">
     <el-table :data="datalist.slice((currentPage - 1) * pageSize, currentPage*pageSize)" border style="table-layout: fixed">
-      <el-table-column label="序号" >
+      <el-table-column label="序号" align="center">
         <template v-slot:default="scope">
               <span>{{(currentPage - 1) * pageSize + scope.$index + 1}}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="accountName" label="账号名" ></el-table-column>
-      <el-table-column prop="platform" label="应用端" ></el-table-column>
-      <el-table-column prop="platformFunction" label="平台功能"></el-table-column>
-      <el-table-column prop="operationFunction" label="操作功能" ></el-table-column>
-      <el-table-column prop="operationContent" label="操作内容" ></el-table-column>
-      <el-table-column prop="loginIp" label="登陆IP" ></el-table-column>
-      <el-table-column prop="operationTime" label="操作时间"  sortable></el-table-column>
+      <el-table-column align="center" prop="accountName" label="账号名" ></el-table-column>
+      <el-table-column align="center" prop="platform" label="应用端" ></el-table-column>
+      <el-table-column align="center" prop="platformFunction" label="平台功能"></el-table-column>
+      <el-table-column align="center" prop="operationFunction" label="操作功能" ></el-table-column>
+      <el-table-column align="center" prop="operationContent" label="操作内容" show-overflow-tooltip ></el-table-column>
+      <el-table-column align="center" prop="loginIp" label="登陆IP" ></el-table-column>
+      <el-table-column align="center" prop="operationTime" label="操作时间"  sortable></el-table-column>
     </el-table>
 
     <el-pagination align='center' 
@@ -271,10 +271,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-tr td {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 145px;
+.table-tooltip{
+    max-width: 200px;
+}
+.table-style .cell{
+    width:200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 </style>
