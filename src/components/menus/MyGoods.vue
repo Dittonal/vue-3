@@ -1,13 +1,13 @@
 <template>
   <h3>操作日志</h3>
   <div class="search-content">
-    <a-row>
+    <a-row type="flex" justify="space-between">
       <a-col style="float:left">
         <!-- date-picker -->
         <a-form-item label="操作时间">
           <div>
             <a-date-picker
-              size="large"
+              size="middle"
               v-model:value="startTime"
               :disabled-date="disabledStartDate"
               show-today
@@ -17,7 +17,7 @@
             />
             &nbsp;&nbsp;-&nbsp;&nbsp;
             <a-date-picker
-              size="large"
+              size="middle"
               v-model:value="endTime"
               :disabled-date="disabledEndDate"
               show-today
@@ -33,6 +33,7 @@
         <a-input
           v-model:value="search"
           placeholder="请输入关键词进行检索"
+          :size='small'
           style="width: 260px; margin: 0 10px"
         >
         </a-input>

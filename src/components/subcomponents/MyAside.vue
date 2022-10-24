@@ -12,7 +12,7 @@
         <router-link to="/home/rights">权限管理</router-link>
       </li>
       <li class="menu-item">
-        <router-link to="/home/goods">商品管理</router-link>
+        <router-link to="/home/goods">antd版本</router-link>
       </li>
 
       <li class="menu-item">
